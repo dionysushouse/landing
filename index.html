@@ -238,5 +238,24 @@
 
         </footer>
     </main>
+     <script>
+        // Visit counter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const counterElement = document.getElementById('visit-counter');
+            let visitCount = localStorage.getItem('visitCount');
+
+            if (visitCount) {
+                visitCount = parseInt(visitCount) + 1;
+            } else {
+                visitCount = 1;
+            }
+
+            localStorage.setItem('visitCount', visitCount);
+            
+            // Format the number with Greek style (dot as thousand separator)
+            const formattedCount = new Intl.NumberFormat('el-GR').format(visitCount);
+            counterElement.textContent = `Visits: ${formattedCount}`;
+        });
+    </script>
 </body>
 </html>
